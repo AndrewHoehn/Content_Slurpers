@@ -1,6 +1,15 @@
 # Content_Slurpers
 A set of python tools useful for spidering websites and PDFs for text that can be easily loaded into custom GPTs or other LLMs. 
 
+## Why? 
+Tools like custom GPTs can be tremendously useful, but it's difficult to fill them with relevant data when that data comes from websites, and PDF files.  This set of tools can be used to: 
+
+1) Spider a website for all its text content, and save that text content into a single HTML file that's (relatively) free of duplicate content.
+2) Spider a website for all of its PDF files, and download those to your local machine.
+3) Process all those individual PDF documents and convert them into a single text file that attempts to preserve useful formatting.
+
+By using these together, you can get reasonably small files that can be uploaded to a custom GPT or other AI tool, to use for a variety of purposes. 
+
 
 
 # Web_to_Single_HTML_File_Spider.py
@@ -90,9 +99,9 @@ This Python script is a web crawler designed to spider an entire domain and down
 
 This tool is intended for legitimate use cases such as archiving, research, or personal use. Always ensure you have the right to download content from the target domain and adhere to the website's terms of service and robots.txt file.
 
-# PDF Directory Spider and Text Extractor
+# PDF_Text_Converter.py
 
-This Python script spiders through a specified directory and its subdirectories, locating all PDF files and extracting their text content into a single (or multiple) text file(s). It's designed to maintain basic formatting and clarity, making the extracted text suitable for further processing or analysis, including ingestion by AI models.
+This tool turns a directory full of PDFs (and sub-directories) into a single text file, while trying to preserve some formatting. 
 
 ## Features
 
