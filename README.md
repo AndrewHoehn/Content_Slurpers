@@ -39,21 +39,11 @@ This Python-based tool is designed to spider a given domain, extract text-based 
 - Python 3.x
 - Required libraries: requests, beautifulsoup4, html5lib, langdetect
 
-## Installation
-
-```bash
-git clone https://github.com/yourusername/web-content-extractor.git
-cd web-content-extractor
-pip install -r requirements.txt
-```
-
 ## Usage
 
-```bash
-python web_content_extractor.py
-```
-
-Follow the prompts to enter the target domain and desired output filename.
+1. Run the script from the command line.
+2. Enter the domain you want to spider.
+3. Enter the filename for the output single-HTML file. 
 
 ## Limitations
 
@@ -62,6 +52,76 @@ Follow the prompts to enter the target domain and desired output filename.
 - Language detection may not be 100% accurate for very short texts
 
 
----
+# Single_Domain_PDF_Scraper.py
 
-This description provides a comprehensive overview of the tool, its features, how it works, potential use cases, and how to set it up and use it. It also mentions some limitations and invites contributions, which are good practices for open-source projects on GitHub. Remember to replace "yourusername" with your actual GitHub username and adjust any other details as necessary.
+This Python script is a web crawler designed to spider an entire domain and download all unique PDF files found within it. It operates in two distinct phases: spidering and downloading, providing a comprehensive solution for bulk PDF retrieval from websites.
+
+## Features
+
+- **Domain-wide Spidering**: Crawls an entire domain, following internal links to discover all accessible pages.
+- **PDF URL Extraction**: Identifies and collects URLs of all PDF files encountered during the spidering process.
+- **Duplicate Detection**: Uses MD5 hashing to avoid downloading duplicate PDFs, even if they have different filenames.
+- **Two-Phase Operation**: 
+  1. Spiders the domain to collect all PDF URLs.
+  2. Downloads unique PDFs in a separate phase.
+- **Progress Tracking**: Provides detailed progress updates during both spidering and downloading phases.
+- **User-Friendly**: Prompts for domain URL and save location, making it easy to use for various domains.
+- **Error Handling**: Gracefully handles exceptions to ensure the script continues running even if individual page access fails.
+
+## Usage
+
+1. Run the script.
+2. Enter the URL of the domain you wish to spider when prompted.
+3. Specify the folder where you want to save the downloaded PDFs.
+4. The script will first spider the domain, then download unique PDFs.
+
+## Output
+
+- Console updates on spidering progress.
+- Detailed download progress, including counts and percentages.
+- Final summary of PDFs found and downloaded.
+
+## Requirements
+
+- Python 3.x
+- Libraries: requests, beautifulsoup4
+
+## Ethical Considerations
+
+This tool is intended for legitimate use cases such as archiving, research, or personal use. Always ensure you have the right to download content from the target domain and adhere to the website's terms of service and robots.txt file.
+
+# PDF Directory Spider and Text Extractor
+
+This Python script spiders through a specified directory and its subdirectories, locating all PDF files and extracting their text content into a single (or multiple) text file(s). It's designed to maintain basic formatting and clarity, making the extracted text suitable for further processing or analysis, including ingestion by AI models.
+
+## Features
+
+- Recursively searches through directories to find all PDF files
+- Extracts text from PDF files while attempting to preserve basic formatting
+- Combines extracted text from multiple PDFs into a single output
+- Automatically splits output into multiple files if it exceeds 5MB
+- Handles errors gracefully, continuing processing even if individual PDFs fail
+
+## Requirements
+
+- Python 3.x
+- PyPDF2 library
+
+## Usage
+
+1. Run the script from the command line.
+2. Enter the local directory path you want to spider for PDFs
+3. Enter your desired output filename.
+
+The script will then process all PDFs in the specified directory and its subdirectories, saving the extracted text to the specified output file (or multiple files if the output exceeds 5MB).
+
+## Output
+
+- If the total extracted text is 5MB or less, it will be saved to a single file with the name you specify.
+- If the total extracted text exceeds 5MB, it will be split into multiple files, each 5MB or less. The files will be named like this: `output_1.txt`, `output_2.txt`, etc. (assuming you named the output file "output.txt").
+
+## Limitations
+
+- The quality of text extraction can vary depending on the PDF structure and content. Some PDFs, especially those with complex layouts or scanned images, may not extract perfectly.
+- Very large directories with numerous PDFs may take a significant amount of time to process.
+
