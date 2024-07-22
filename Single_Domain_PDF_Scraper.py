@@ -42,6 +42,10 @@ def spider_domain(url):
     return pdf_urls
 
 def download_pdfs(pdf_urls, folder):
+    if not pdf_urls:
+        print("No PDFs were found during the spidering process.")
+        return 0
+
     downloaded_hashes = set()
     total_pdfs = len(pdf_urls)
     downloaded_count = 0
@@ -78,10 +82,15 @@ if __name__ == "__main__":
 
     print("\nStep 1: Spidering the domain...")
     pdf_urls = spider_domain(domain_url)
-    print(f"\nSpidering completed. Found {len(pdf_urls)} unique PDF URLs.")
+    
+    if not pdf_urls:
+        print("\nNo PDFs were found on the specified domain.")
+    else:
+        print(f"\nSpidering completed. Found {len(pdf_urls)} unique PDF URLs.")
 
-    print("\nStep 2: Downloading PDFs...")
-    downloaded_count = download_pdfs(pdf_urls, save_folder)
+        print("\nStep 2: Downloading PDFs...")
+        downloaded_count = download_pdfs(pdf_urls, save_folder)
 
-    print(f"\nDownload completed. Downloaded {downloaded_count} unique PDFs out of {len(pdf_urls)} found.")
-    print(f"Download efficiency: {downloaded_count/len(pdf_urls):.1%}")
+        print(f"\nDownload completed. Downloaded {downloaded_count} unique PDFs out of {len(pdf_urls)} found.")
+        if len(pdf_urls) > 0:
+            print(f"Download efficiency: {downloaded_count/len(pdf_urls):.1%}")
