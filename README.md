@@ -21,6 +21,7 @@ This Python-based tool is designed to spider a given domain, extract text-based 
 ## Key Features
 
 - **Domain Spidering**: Crawls an entire domain, creating a comprehensive sitemap.
+- **Homepage-Linked Content Spidering**: Allows the user to choose to only spider and download pages linked from the homepage, instead of the entire content of the domain. 
 - **Language Detection**: Identifies and extracts only English-language content.
 - **Multimedia Filtering**: Automatically detects and skips image, video, and audio files.
 - **HTML Structure Preservation**: Maintains basic HTML formatting including headers, paragraphs, tables, and text emphasis.
