@@ -82,8 +82,9 @@ This Python script is a web crawler designed to spider an entire domain and down
 
 1. Run the script.
 2. Enter the URL of the domain you wish to spider when prompted.
-3. Specify the folder where you want to save the downloaded PDFs.
-4. The script will first spider the domain, then download unique PDFs.
+3. Choose to either spider the entire domain, or just the homepage-linked URLs
+4. Specify the folder where you want to save the downloaded PDFs.
+5. The script will first spider the domain, then download unique PDFs.
 
 ## Output
 
