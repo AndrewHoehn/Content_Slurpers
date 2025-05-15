@@ -14,6 +14,8 @@ By using these together, you can get reasonably small files that can be uploaded
 
 # Web_to_Single_HTML_File_Spider.py
 
+# Web_to_Single_HTML_File_Spider
+
 ## Description
 
 This Python-based tool is designed to spider a given domain, extract text-based content, and save it in a structured HTML format as a single HTML file. It's particularly useful for creating datasets for AI training, content analysis, or archiving purposes.
@@ -21,8 +23,12 @@ This Python-based tool is designed to spider a given domain, extract text-based 
 ## Key Features
 
 - **Domain Spidering**: Crawls an entire domain, creating a comprehensive sitemap.
-- **Homepage-Linked Content Spidering**: Allows the user to choose to only spider and download pages linked from the homepage, instead of the entire content of the domain. 
-- **Language Detection**: Identifies and extracts only English-language content.
+- **Homepage-Linked Content Spidering**: Allows the user to choose to only spider and download pages linked from the homepage, instead of the entire content of the domain.
+- **Language Detection**: Identifies and extracts only English-language content using a multi-level approach:
+  - URL pattern analysis to avoid unnecessary downloads
+  - HTML language tags inspection 
+  - Full content language detection (only when needed)
+- **Real-time Progress Tracking**: Shows progress bars for all operations, with estimated completion times.
 - **Multimedia Filtering**: Automatically detects and skips image, video, and audio files.
 - **HTML Structure Preservation**: Maintains basic HTML formatting including headers, paragraphs, tables, and text emphasis.
 - **Content De-duplication**: Removes common elements like menus and footers across pages.
@@ -31,7 +37,7 @@ This Python-based tool is designed to spider a given domain, extract text-based 
 ## How It Works
 
 1. **User Input**: Prompts for the target domain and output filename.
-2. **Sitemap Creation**: Spiders the domain, identifying English-language HTML pages.
+2. **Sitemap Creation**: Spiders the domain, identifying English-language HTML pages using an optimized multi-level approach.
 3. **Content Extraction**: Processes each page, preserving essential HTML structure.
 4. **De-duplication**: Removes common elements across pages to focus on unique content.
 5. **Content Saving**: Combines processed content and saves it, splitting into chunks if necessary.
@@ -47,13 +53,37 @@ This Python-based tool is designed to spider a given domain, extract text-based 
 ## Requirements
 
 - Python 3.x
-- Required libraries: requests, beautifulsoup4, html5lib, langdetect
+- Required libraries: 
+  - requests
+  - beautifulsoup4
+  - html5lib
+  - langdetect
+  - tqdm (for progress bars)
+
+## Installation
+
+```bash
+pip install requests beautifulsoup4 html5lib langdetect tqdm
+```
 
 ## Usage
 
-1. Run the script from the command line.
-2. Enter the domain you want to spider.
-3. Enter the filename for the output single-HTML file. 
+1. Run the script from the command line:
+   ```
+   python Web_to_Single_HTML_File_Spider.py
+   ```
+2. Enter the domain you want to spider (e.g., https://example.com).
+3. Choose whether to spider the entire domain or just the homepage-linked content.
+4. If a sitemap is found, decide whether to use it or manually spider the site.
+5. Enter the filename for the output single-HTML file.
+
+## Performance Optimization
+
+This version includes significant performance improvements:
+- **Optimized Language Detection**: Uses a cascade approach from fastest to most expensive checks
+- **URL Pattern Pre-filtering**: Detects language from URL patterns before downloading content
+- **HTML Tag Analysis**: Checks language tags before falling back to full content analysis
+- **Progress Visualization**: Real-time progress tracking with ETA for all operations
 
 ## Limitations
 
@@ -61,45 +91,6 @@ This Python-based tool is designed to spider a given domain, extract text-based 
 - May not handle JavaScript-rendered content
 - Language detection may not be 100% accurate for very short texts
 
-
-# Single_Domain_PDF_Scraper.py
-
-This Python script is a web crawler designed to spider an entire domain and download all unique PDF files found within it. It operates in two distinct phases: spidering and downloading, providing a comprehensive solution for bulk PDF retrieval from websites.
-
-## Features
-
-- **Domain-wide Spidering**: Crawls an entire domain, following internal links to discover all accessible pages.
-- **PDF URL Extraction**: Identifies and collects URLs of all PDF files encountered during the spidering process.
-- **Duplicate Detection**: Uses MD5 hashing to avoid downloading duplicate PDFs, even if they have different filenames.
-- **Two-Phase Operation**: 
-  1. Spiders the domain to collect all PDF URLs.
-  2. Downloads unique PDFs in a separate phase.
-- **Progress Tracking**: Provides detailed progress updates during both spidering and downloading phases.
-- **User-Friendly**: Prompts for domain URL and save location, making it easy to use for various domains.
-- **Error Handling**: Gracefully handles exceptions to ensure the script continues running even if individual page access fails.
-
-## Usage
-
-1. Run the script.
-2. Enter the URL of the domain you wish to spider when prompted.
-3. Choose to either spider the entire domain, or just the homepage-linked URLs
-4. Specify the folder where you want to save the downloaded PDFs.
-5. The script will first spider the domain, then download unique PDFs.
-
-## Output
-
-- Console updates on spidering progress.
-- Detailed download progress, including counts and percentages.
-- Final summary of PDFs found and downloaded.
-
-## Requirements
-
-- Python 3.x
-- Libraries: requests, beautifulsoup4
-
-## Ethical Considerations
-
-This tool is intended for legitimate use cases such as archiving, research, or personal use. Always ensure you have the right to download content from the target domain and adhere to the website's terms of service and robots.txt file.
 
 # PDF_Text_Converter.py
 
