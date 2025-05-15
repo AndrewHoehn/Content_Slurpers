@@ -14,8 +14,6 @@ By using these together, you can get reasonably small files that can be uploaded
 
 # Web_to_Single_HTML_File_Spider.py
 
-# Web_to_Single_HTML_File_Spider
-
 ## Description
 
 This Python-based tool is designed to spider a given domain, extract text-based content, and save it in a structured HTML format as a single HTML file. It's particularly useful for creating datasets for AI training, content analysis, or archiving purposes.
